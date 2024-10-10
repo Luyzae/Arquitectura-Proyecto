@@ -20,4 +20,4 @@ conexion.connect((error) => {
 });
 
 // Exportar la conexión para que pueda ser utilizada en otros archivos
-module.exports = conexion;
+module.exports = conexion;  
