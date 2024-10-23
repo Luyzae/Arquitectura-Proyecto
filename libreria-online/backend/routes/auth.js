@@ -29,7 +29,7 @@ router.post('/register', [
 
   try {
     // Verificar si el usuario ya existe
-    const userExists = await dbQuery('SELECT * FROM usuarios WHERE email_telefono = ?', [email]);
+    const userExists = await dbQuery('SELECT * FROM usuario WHERE email_telefono = ?', [email]);
     if (userExists.length > 0) {
       return res.status(400).json({ message: 'El usuario ya está registrado' });
     }
@@ -39,7 +39,7 @@ router.post('/register', [
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Insertar el nuevo usuario en la base de datos
-    const insertQuery = 'INSERT INTO usuarios (nombre, email_telefono, contraseña, verificado) VALUES (?, ?, ?, 0)';
+    const insertQuery = 'INSERT INTO usuario (nombre, email_telefono, password, verificado) VALUES (?, ?, ?, 0)';
     await dbQuery(insertQuery, [nombre, email, hashedPassword]);
     
     res.status(201).json({ message: 'Usuario registrado exitosamente' });

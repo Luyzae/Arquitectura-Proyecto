@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const productosRouter = require('./routes/productos');  // Agregar la ruta de autenticación
+const productosRouter = require('./routes/products');  // Agregar la ruta de autenticación
 const cors = require('cors');
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter); 
 app.use('/auth', authRouter);
-app.use('/productos', productosRouter);
+app.use('/products', productosRouter);
   // Usar la ruta para autenticación
 
 // catch 404 and forward to error handler
